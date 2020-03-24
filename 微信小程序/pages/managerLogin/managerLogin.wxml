@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="head">
+    <view class="text">管理员登陆</view>
+  </view>
+  <form>                                <!--表单用于提交数据-->
+    <view class="logId" name="logId">   <!--name用于表单组件提交后索引-->
+      <view class="words">id</view>
+        <input class="id" placeholder="输入管理员id" />
+    </view>
+
+
+    <view class="logPassword" name="logPassword">
+      <view class="words">密码</view>
+      <input class="password" placeholder="输入管理员密码" password="true" type="text" />
+    </view>
+
+    <button class="logButton" form-type='submit' catchtap='buttonTap'>    <!--submit的type用于提交表单-->
+      <view class="logButtonTxt">登陆</view>
+    </button>
+  </form>
+</view>

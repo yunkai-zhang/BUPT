@@ -1,0 +1,82 @@
+<!--pages/managerFirstPage/managerFirstPage.wxml-->
+
+<view class="container">
+  <view class="instruction">请选择您要查看的地区 </view>
+  <view class="instructionWords">省-市-区/县-机器编号</view>
+
+  <view class="input">
+    <!----------------------------------------------------------------------------------旧 -->
+    <!-- <input placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />-->
+    <!----------------------------------------------------------------------------------旧 -->
+
+    <!--新------------------------------------------------------------------------------------------------->
+    <input placeholder="选择" value="{{province}}-{{city}}-{{county}}-{{machine}}" focus="{{focus}}" bindfocus="open" />
+    <!--这里也使用了open,所以点一下该区域就会弹出3个column-->
+    <!--新---------------------------------------------------------------------------------->
+  </view>
+</view>
+<view wx:if="{{condition}}" class="citypicker">
+  <!-- 用上condition，页面初始化后才会显示页面 -->
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+    <!--value用于指示三个列用谁去显示-->
+    <view class="cityheader">
+      <view bindtap="open" class="city-cancel">取消</view>
+      <view bindtap="open" class="city-true">确定</view>
+    </view>
+    <!-- <view class="cityColumn"> 加了会出错-->
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:5rpx;font-size:30rpx;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:0rpx;font-size:30rpx;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10rpx;font-size:30rpx;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{machines}}" wx:key="item" style="line-height: 50px;padding-left:130rpx;font-size:30rpx;">{{item}}</view>
+    </picker-view-column>
+    <!-- </view> -->
+  </picker-view>
+</view>
+<!--滚轮和电池信息总是只显示一个-->
+<view wx:else class="batteryInfor">
+  <view class="used">
+    <view class="words">箱内旧电池种类及数量</view>
+    <view class="intro">
+      <view class="type">电池种类</view>
+      <view class="num">电池数量</view>
+    </view>
+    <view class="show">
+      <view class="type">
+        <view class="five">5号电池</view>
+        <view class="seven">7号电池</view>
+        <view class="buttonBattery">纽扣电池</view>
+      </view>
+      <view class="num">
+        <view class="num">{{usedBatteryNum5}}</view>
+        <view class="num">{{usedBatteryNum7}}</view>
+        <view class="num">{{usedBatteryNumButton}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="new">
+    <view class="words">箱内新电池种类及数量</view>
+    <view class="intro">
+      <view class="type">电池种类</view>
+      <view class="num">电池数量</view>
+    </view>
+    <view class="show">
+      <view class="type">
+        <view class="five">5号电池</view>
+        <view class="seven">7号电池</view>
+        <view class="buttonBattery">纽扣电池</view>
+      </view>
+      <view class="num">
+        <view class="num">{{newBatteryNum5}}</view>
+        <view class="num">{{newBatteryNum7}}</view>
+        <view class="num">{{newBatteryNumButton}}</view>
+      </view>
+    </view>
+  </view>
+</view>

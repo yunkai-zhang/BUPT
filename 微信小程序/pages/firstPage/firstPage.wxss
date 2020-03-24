@@ -1,0 +1,57 @@
+.container{
+  padding: 0;
+  margin: 0;
+}
+ .head{
+    background-color: #fcfdfb;
+    width:80%;
+    height:auto;
+
+    color:rgb(7, 7, 7);
+    text-align: center;
+    padding-top: 50rpx;
+    padding-bottom: 50rpx;
+    font-weight: bold;
+    font-size: 30px;
+
+    border:2px solid black;
+    border-radius: 10px;
+  
+  }
+
+.customerLogin .cusLogButton{
+  /* background-color: rgb(247, 245, 245); */
+  
+  width: 250rpx;
+  height: 250rpx;
+
+  margin-top:200rpx;
+
+  border:2px solid black;
+  border-radius: 50%;
+
+}
+ .cusLogTxt{
+  margin-top:60rpx;
+  color: rgb(7, 7, 7);
+  text-align: center;
+  /* padding-top:; */
+ }
+
+ .managerLogin .managerLoginButton{
+  background-color: rgb(247, 245, 245);
+  width: 250rpx;
+  height: 250rpx;
+
+  margin-top:200rpx;
+
+  border:2px solid black;
+  border-radius: 50%;
+
+}
+ .manaLogTxt{
+  margin-top:70rpx;
+  color: rgb(7, 7, 7);
+  text-align: center;
+  /* padding-top:; */
+ }
