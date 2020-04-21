@@ -7,6 +7,8 @@ I develop this mini program to control the battery collector via Internet
 > 注意，中国内地如果无法显示图片，请链接vpn后刷新重试<br/>
 
 
+![myphoto](https://github.com/yunkai-zhang/yunkai-zhang.github.io/raw/master/images/for%20github/myphoto.jpg)
+
 
 - **The First Page**
   1. User and Admin click different buttons to login<br/>
