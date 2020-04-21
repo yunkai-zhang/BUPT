@@ -7,12 +7,10 @@ I develop this mini program to control the battery collector via Internet
 > 注意，中国内地如果无法显示图片，请链接vpn后刷新重试<br/>
 
 
-![myphoto](https://github.com/yunkai-zhang/yunkai-zhang.github.io/raw/master/images/for%20github/myphoto.jpg)
-
 
 - **The First Page**
   1. User and Admin click different buttons to login<br/>
-![](https://github.com/yunkai-zhang/yunkai-zhang.github.io/raw/master/images/for%20github/Wechat%20Mini%20Program/%E5%88%9D%E5%A7%8B%E7%95%8C%E9%9D%A2.png)
+![firstpage](https://github.com/yunkai-zhang/yunkai-zhang.github.io/blob/master/images/for%20github/Wechat%20Mini%20Program/firstpage.png)
 
 ---
 
@@ -21,7 +19,7 @@ I develop this mini program to control the battery collector via Internet
   2. Then, you should click the round "Login" button, and Wechat will ask you whether this mini program can have your permission 
 to access your location and phone number
   3. To use this mini program, you need to give this permission.<br/>
-![](https://github.com/yunkai-zhang/yunkai-zhang.github.io/raw/master/images/for%20github/Wechat%20Mini%20Program/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2.png)
+![userlogin](https://github.com/yunkai-zhang/yunkai-zhang.github.io/blob/master/images/for%20github/Wechat%20Mini%20Program/userlogin.png)
 
 ---
 
