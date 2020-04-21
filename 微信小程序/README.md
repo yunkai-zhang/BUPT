@@ -30,14 +30,14 @@ to access your location and phone number
   2. If you click the red round button "Exchange", you can type in the number of V battery you want to 
 exchange for. If the credits is enough for this exchange, those V batteries will be pushed out from
  the battery collector<br/>
-![](https://github.com/yunkai-zhang/yunkai-zhang.github.io/raw/master/images/for%20github/Wechat%20Mini%20Program/%E7%94%A8%E6%88%B7%E5%85%91%E6%8D%A2.jpg)
+![useroperate](https://github.com/yunkai-zhang/yunkai-zhang.github.io/blob/master/images/for%20github/Wechat%20Mini%20Program/useroperate.jpg)
 
 ---
 
 - **Admin Login Page**
   1. Firstly, you should type in your ID and Password.
   2. Then you can click the cyan round button "Login" to log in if your password is correct<br/>
-![](https://github.com/yunkai-zhang/yunkai-zhang.github.io/raw/master/images/for%20github/Wechat%20Mini%20Program/%E7%AE%A1%E7%90%86%E5%91%98%E7%99%BB%E5%BD%95.png)
+![adminlogin](https://github.com/yunkai-zhang/yunkai-zhang.github.io/blob/master/images/for%20github/Wechat%20Mini%20Program/adminlogin.png)
 
 ---
 
@@ -45,4 +45,4 @@ exchange for. If the credits is enough for this exchange, those V batteries will
   1. On the upper side of the page, you can check the status of each battery collector by selecting
  "Province-City-District-ID of Battery Collector"
   2. Then, two boxes below will show you the number of used and new batteries in this battery Collector.<br/>
-![](https://github.com/yunkai-zhang/yunkai-zhang.github.io/raw/master/images/for%20github/Wechat%20Mini%20Program/%E7%AE%A1%E7%90%86%E5%91%98%E6%9F%A5%E8%AF%A2.jpg)
+![adminmonitoring](https://github.com/yunkai-zhang/yunkai-zhang.github.io/blob/master/images/for%20github/Wechat%20Mini%20Program/adminmoni.jpg)
