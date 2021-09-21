@@ -1,0 +1,51 @@
+<!--pages/customerFirstPage/customerFirstPage.wxml-->
+<view class="container">
+  <!-- <view class="head">
+    <image class="customerWxAvatar"/>
+  </view> -->
+  <!-- 可以省略 -->
+
+  <view class="credit">
+    <view class="creditWord">
+      <text class="words">积分:  </text>
+    </view>
+    <view class="creditValue">
+      <text class="value">{{creditValue}}</text>    <!--后台传来的积分值-->
+    </view>
+  </view>
+
+  <view class="battery">
+    <view class="intro">
+      <text class="name">电池型号</text>
+      <text class="totalNumber">总数</text>
+      <text class="credit">所需积分</text>
+      <text class="wantNumber" bindinput ="wantNum">兑换数量</text>
+    </view>
+
+    <view class="five">
+      <text class="word">五号电池</text>
+      <text class="totalNumber">{{totalNumber}}</text>
+      <text class="credit">{{credit5}}</text>
+      <input class="wantNumber" bindinput="wantNum"></input>
+      <!-- 不加bindinput会导致无法感知输入框内容且不报错 -->
+    </view>
+  </view>
+
+  <button class="exchange" catchtap='onTapToExchange' wx:if="{{isChanging}}" style='background-color:rgb(250,100,10)'>
+  <!-- catchtap写成catchTap会导致函数无法触发，且不会报错，按钮点不到可以点框左边一点 -->
+    <text class="exTxt">兑换</text>
+  </button>
+   <button class="exchange" catchtap='onTapToExchange'  wx:else style='background-color:rgb(250,250,250)'>
+    <text class="exTxt">兑换</text>
+  </button>
+
+  <button class="giveButton" catchtap='giveButton' wx:if="{{isGiving}}"  style='background-color:rgb(100,250,150)'>
+    <text class="giveButtonTxt">投电池</text>
+  </button>
+  <button class="giveButton" catchtap='giveButton' wx:else style='background-color:rgb(250,250,250)'>
+    <text class="giveButtonTxt">投电池</text>
+  </button>
+  <view class="remind">
+    <text class="remindTxt">{{remindTxt}}</text>   <!--提示信息在30秒后消失-->
+  </view>
+</view>

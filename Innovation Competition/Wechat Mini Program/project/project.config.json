@@ -1,0 +1,64 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.2",
+	"appid": "wx6bf16b08ccdb6f45",
+	"projectname": "%E7%94%B5%E6%B1%A0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%99%A8%E4%BA%BA",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "managerLogin",
+					"pathName": "pages/managerLogin/managerLogin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "customerFirstPage",
+					"pathName": "pages/customerFirstPage/customerFirstPage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "customerLogin",
+					"pathName": "pages/customerLogin/customerLogin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "managerFirstPage",
+					"pathName": "pages/managerFirstPage/managerFirstPage"
+				}
+			]
+		}
+	}
+}

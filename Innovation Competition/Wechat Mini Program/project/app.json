@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/firstPage/firstPage",
+    "pages/customerLogin/customerLogin",
+    "pages/managerLogin/managerLogin",
+    "pages/managerFirstPage/managerFirstPage",
+    "pages/customerFirstPage/customerFirstPage"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

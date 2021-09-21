@@ -1,0 +1,15 @@
+<view class="container">
+  <form class="machineId" bindsubmit="bindsubmit">
+  <view class="machineIdIntro">
+    <text class="machineIdWord">机器号</text>
+    <input type="text" class="machineIdInput" name="machineIdInput" placeholder='请输入本机号码'/>
+    </view>
+    <button class="WxInfoRequestButton" form-type='submit' wx:if="{{logNotClicked}}" style='background-color:rgb(245,245,245)'>
+      <text class="WxInfoRequestButtonTxt">登陆</text>
+    </button>
+    <button class="WxInfoRequestButton" form-type='submit' wx:else style='background-color:rgb(200,255,245)'>
+      <text class="WxInfoRequestButtonTxt">登陆</text>
+    </button>
+  </form>
+  
+</view>

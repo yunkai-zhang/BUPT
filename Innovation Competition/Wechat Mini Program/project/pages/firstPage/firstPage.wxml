@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="head">电池回收机</view>
+
+    <view class="customerLogin">
+      <button class="cusLogButton"  catchtap='cusLogButton' wx:if="{{cusNotClick}}" style='background-color:rgb(245,245,245)'>
+        <view class="cusLogTxt">顾客登录</view>
+      </button>                                            <!--相对路径要用../表示上一级 -->
+      <button class="cusLogButton"  catchtap='cusLogButton' wx:else style='background-color:rgb(200,255,245)'>
+        <view class="cusLogTxt">顾客登录</view>
+      </button>
+    </view>
+
+    <view class="managerLogin">
+      <button class="managerLoginButton" catchtap='managerLoginButton' wx:if="{{manaNotClick}}" style='background-color:rgb(245,245,245)'>
+        <view class="manaLogTxt">管理员登录</view>
+      </button>
+      <button class="managerLoginButton" catchtap='managerLoginButton' wx:else style='background-color:rgb(200,255,245)'>
+        <view class="manaLogTxt">管理员登录</view>
+      </button>
+    </view>
+</view>

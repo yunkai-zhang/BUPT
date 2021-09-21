@@ -1,0 +1,152 @@
+/* pages/managerFirstPage/managerFirstPage.wxss */
+.instruction{
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  font-size:50rpx;
+}
+.input{
+  width: 100%;
+}
+.input input {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px #d9d9d9 solid;
+  border-top: 1px #d9d9d9 solid;
+  padding: 20rpx 50rpx;
+  text-align: center;
+  padding-left: 0rpx;
+}
+
+/* .section {
+  padding-top: 20rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+} */
+
+/* .userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+} */
+
+.container {
+  /* position: absolute; */
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+} 
+
+.citypickers{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  background-color: red;
+}
+
+.citypicker{
+  
+}
+.citybody {
+  /* position: fixed; */
+  bottom: 0px;
+  /* display:flex;
+  flex-direction: column; */
+
+}
+
+.cityheader {
+  position: absolute;
+  top:0px;
+  width: 100%;
+  z-index: 4;
+}
+.instructionWords{
+  padding-top: 30rpx;
+  padding-bottom: 15rpx;
+   background-color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.city-cancel {
+  float: left;
+  margin: 20rpx;
+  color: #818181;
+}
+
+.city-true {
+  float: right;
+  margin: 20rpx;
+  color: #2FB42E
+}
+/* 
+.section .picker {
+  background-color: #fff;
+  border-bottom: 1px #d9d9d9 solid;
+  border-top: 1px #d9d9d9 solid;
+  padding: 20rpx;
+} */
+.batteryInfor{
+  margin-top: 50rpx;
+}
+.batteryInfor .intro{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+}
+.batteryInfor .type{
+  margin-left: 120rpx;
+  width: 200rpx;
+}
+.batteryInfor .num{
+  margin-left: 150rpx;
+  align-content: center;
+}
+.batteryInfor .used{
+height:300rpx;
+border: 2px #d9d9d9 solid; 
+border-radius: 3%;
+background-color:#d9d9d9  ;
+margin-left: 20rpx;
+margin-right: 20rpx;
+}
+.batteryInfor .new{
+  height:300rpx;
+  border: 2px #d9d9d9 solid; 
+border-radius: 3%;
+background-color:#d9d9d9  ;
+margin-left: 20rpx;
+margin-right: 20rpx;
+margin-top: 30rpx;
+}
+.batteryInfor .words{
+  text-align: center;
+}
+.show {
+display:flex;
+flex-direction: row;
+}
+.batteryInfor .show .num{
+  margin-left: 100rpx;
+  align-content: center;
+}
+
+
+
+

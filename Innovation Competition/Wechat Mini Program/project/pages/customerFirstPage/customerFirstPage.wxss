@@ -1,0 +1,120 @@
+/* pages/customerFirstPage/customerFirstPage.wxss */
+
+.container{
+padding-top:0;
+margin-bottom: 0;
+display: flex;
+flex-direction: column;
+}
+
+.credit{
+display: flex;
+flex-direction: row; 
+}
+.credit .creditWord{
+background-color: rgb(235, 236, 236);
+border: 2px solid rgb(238, 238, 238);
+border-radius: 10px;
+margin-right: 50rpx;
+}
+.credit .creditValue{
+background-color: rgb(239, 240, 238);
+border: 2px solid rgb(243, 243, 242);
+border-radius: 10px;
+width: 200rpx;
+color: rgb(5, 102, 5);
+}
+
+.battery{
+  /* padding-left: 90rpx; */
+}
+.battery .intro{
+display: flex;
+flex-direction: row;
+padding-top: 20%;
+}
+.battery .intro .name{
+  margin-right: 50rpx;
+}
+.battery .intro .totalNumber{
+   margin-right: 50rpx;
+}
+.battery .intro .credit{
+   margin-right: 50rpx;
+}
+
+.battery .five{
+display: flex;
+flex-direction: row;
+margin-top:100rpx;
+}
+.battery .five .word{
+  width:180rpx;
+  margin-right: 34rpx;
+}
+.battery .five .totalNumber{
+  width:50rpx;
+  margin-right: 120rpx;
+}
+.battery .five .credit{
+  margin-right: 120rpx;
+}
+.battery .five .wantNumber{
+  border:2px solid black;
+  width: 150rpx;
+}
+
+.exchange{
+/* background-color: rgb(236, 236, 236); */
+border: 5px double rgb(155, 4, 4);
+border-radius: 50%;
+width: 170rpx; 
+height: 170rpx;
+margin-top: 100rpx;
+
+display: flex;
+flex-direction: column;
+
+}
+.exchange .exTxt{
+padding-top: 10%;
+text-align: center;
+font-size: 45rpx;
+color: rgb(201, 3, 3);
+font-weight: bold;
+}
+
+.giveButton{
+  padding:0;
+  padding-top: 20rpx;
+ /* background-color: rgb(241, 240, 238); */
+border: 5px double rgb(6, 189, 6);
+border-radius: 50%;
+width: 170rpx; 
+height: 170rpx;
+margin-top: 100rpx;
+
+/* display: flex;
+flex-direction: column; */
+ 
+}
+.giveButtonTxt{
+width: 180rpx;
+ padding-left: 0;
+ margin-left: 0;
+text-align: center;
+font-size: 43rpx;
+color: rgb(4, 146, 39);
+font-weight: bold; 
+}
+.remind{
+  margin-top:30rpx;
+  width:570rpx;
+  display:flex;
+  flex-direction: row
+}
+.remind .remindTxt{
+  width:400rpx;
+  margin-right: 20rpx;
+  margin-left: 110rpx;
+}
