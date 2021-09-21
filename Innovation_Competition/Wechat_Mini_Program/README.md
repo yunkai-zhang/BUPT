@@ -4,7 +4,7 @@
 I develop this mini program to control the battery collector via Internet
 
 ### Project Display
-> 注意，中国内地如果无法显示图片，请链接vpn后刷新重试<br/>
+> 注意，中国内地如果点击图片后还是无法显示，请科学上网后刷新重试<br/>
 
 
 
