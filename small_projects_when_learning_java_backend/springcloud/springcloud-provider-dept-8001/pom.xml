@@ -17,6 +17,14 @@
     </properties>
 
     <dependencies>
+        <!--Eureka依赖-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+
         <!--我们需要拿到实体类，所以要配置api module
         配置好后点击springcloud-api，idea会自动跳转到springcloud-api的pom文件
 

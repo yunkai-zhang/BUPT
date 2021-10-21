@@ -21,3 +21,11 @@ spring:
     url: jdbc:mysql://localhost:3306/db01?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
+
+# Eureka配置：配置服务注册中心地址，该地址要和EurekaServer中配置的一致。子module会往这个地址注册服务。
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: springcloud-provider-dept8001

@@ -1,0 +1,18 @@
+# Eureka监控页面访问：http://localhost:7001/
+server:
+  port: 7001
+
+
+# Eureka配置
+eureka:
+  instance:
+    # Eureka服务端的实例名字。本机地址也可以写为“localhost”
+    hostname: 127.0.0.1
+  client:
+    # 表示是否向 Eureka 注册中心注册自己(这个模块本身是服务器,所以不需要)
+    register-with-eureka: false
+    # fetch-registry如果为false,则表示本module自己为注册中心（服务器）,客户端的话则为 ture
+    fetch-registry: false
+    # Eureka客户端往本server注册时用的地址，自定义url且url地址不写死而是用application.yml中的配置项填入。
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
