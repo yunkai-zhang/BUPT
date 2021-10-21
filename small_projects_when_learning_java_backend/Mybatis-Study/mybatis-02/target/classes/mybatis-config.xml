@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--引入外部配置文件
+    引入外部配置文件后，environment标签中的property标签就可以动态的配置，在db.properties文件中统一修改-->
+    <properties resource="db.properties">
+        <!--这里也可以实现db.properties中的配置功能，不过db.properties文件中的内容优先级更高，可以覆盖此处设置。出于解耦目的，强烈建议只在db.properties文件中配置-->
+        <property name="password" value="111111"/>
+    </properties>
+
+    <!--可以给实体类起别名-->
+    <!--<typeAliases>-->
+        <!--<typeAlias type="com.zhangyk.pojo.User" alias="User"/>-->
+    <!--</typeAliases>-->
+    <typeAliases>
+        <package name="com.zhangyk.pojo"/>
+    </typeAliases>
+
+    <!--利用db.properties文件动态配置property标签-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+
+        <!--property标签内容写死-->
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--每一个Mapper.xml都需要在Mybatis核心配置文件中注册-->
+    <mappers>
+        <!--<mapper resource="com/zhangyk/dao/UserMapper.xml"></mapper>-->
+        <!--<mapper class="com.zhangyk.dao.UserMapper"/>-->
+        <package name="com.zhangyk.dao"/>
+    </mappers>
+
+</configuration>

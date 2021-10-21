@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--spring配置核心：注解驱动，静态资源过滤（本例未写），视图解析器-->
+
+    <!-- 自动扫描指定的包，下面所有注解类交给IOC容器管理
+    通俗来说就是：配置完这个标签后，spring就会去自动扫描base-package对应的路径或者该路径的子包下面的java文件，
+    如果扫描到文件中带有@Service,@Component,@Repository,@Controller等这些注解的类，则把这些类注册为bean-->
+    <context:component-scan base-package="com.zhangyk.controller"/>
+
+    <!--静态资源过滤
+    不配置这个，js，css等静态资源直接加载不进去-->
+    <mvc:default-servlet-handler />
+
+    <!--注解驱动
+    json乱码问题配置，写死不变。ajax用于前后端数据用json沟通，必须配置防乱码-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+                        <property name="failOnEmptyBeans" value="false"/>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          id="internalResourceViewResolver">
+        <!-- 前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--拦截器配置
+
+    mvc标签说明“拦截器”是Springmvc特有的。没有在web.xml中配，web.xml中配置的任何框架都能用，因为只要有web就有web.xml;web.xml
+    是基于tomcat的。
+
+    拦截器使用了横切aop的思想，不影响原来的业务。
+
+    过滤器也可以做登录判断验证的功能，但是得放到web.xml中，这样增加了服务的成本。Spring的一个好处就是想办法让所有东西都在Spring中配置。
+    所以做了springmvc实现DispatcherServlet,连拦截器也能接管；所以不用自己写过滤器了，就用拦截器即可。-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--/**表示：包括这个请求下面的所有的请求-->
+            <mvc:mapping path="/**"/>
+            <!--定义从哪个类来拦截-->
+            <bean class="com.zhangyk.config.MyInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--/**表示：包括这个请求下面的所有的请求-->
+            <mvc:mapping path="/user/**"/>
+            <!--定义从哪个类来拦截-->
+            <bean class="com.zhangyk.config.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

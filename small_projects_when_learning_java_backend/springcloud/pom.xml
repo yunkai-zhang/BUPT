@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zhangyun</groupId>
+    <artifactId>springcloud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>springcloud-api</module>
+        <module>springcloud-provider-dept-8001</module>
+        <module>springcloud-consumer-dept-80</module>
+    </modules>
+
+    <!--设置打包方式为pom
+    不是springboot中用的jar包打包-->
+    <packaging>pom</packaging>
+
+    <!--定义一些版本号-->
+    <properties>
+        <!--配置项目构建的编码格式-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <!--统一配置一些版本号-->
+        <junit.version>4.12</junit.version>
+        <lombok.version>1.16.18</lombok.version>
+    </properties>
+
+    <!--配置父项目依赖，要用dependencyManagement
+    dependencyManagement 只管理版本，子项目不用写版本号的-->
+    <dependencyManagement>
+        <dependencies>
+            <!--===================重点依赖=========================-->
+            <!-- springcloud依赖
+            https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR1</version>
+                <!--通过pom方式引入的springcloud依赖-->
+                <type>pom</type>
+                <!--<scope>runtime</scope>可以删掉，也可以改成import-->
+                <scope>import</scope>
+            </dependency>
+
+            <!--springboot的导入要和springcloud匹配，具体匹配可见于笔记-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--连接数据库的包们-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.47</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.10</version>
+            </dependency>
+
+            <!--mybatis的启动器
+            老师这应该是打错字了，那个不是springboot的启动器啊，引入的都是mybaits的启动器，应该叫mybatis的启动器-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>1.3.2</version>
+            </dependency>
+
+<!--=======================其他需要的依赖=====================-->
+            <!--下面连着的大块依赖主要用于日志和测试-->
+            <!--junit单元测试-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <!--一般开发时，junit版本不会写死，而是在properties中统一管理-->
+                <version>${junit.version}</version>
+            </dependency>
+            <!--lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <!--一般开发时，版本不会写死，而是在properties中统一管理-->
+                <version>${lombok.version}</version>
+            </dependency>
+            <!--Log4j日志-->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!--有些资源导不出去的话，在build中配置一下maven打包插件（resource）-->
+    <build></build>
+
+
+</project>

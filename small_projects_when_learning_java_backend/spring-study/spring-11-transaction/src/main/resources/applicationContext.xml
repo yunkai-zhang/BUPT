@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--这个beans标签的各个属性是约束文件，xds检查我们的语法的
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--把写死的spring-mapper部分的代码单独整合到spring-mapper.xml中，避免一不小心被修改-->
+    <import resource="spring-mapper.xml"/>
+
+
+    <!--====有什么接口的实现，就注册一下实现类的bean====
+    本文件专注于impl型的bean的注册即可
+    -->
+    <!--
+    id="userMapper"是接口，代表实现的功能；id引用的class="com.zhangyk.mapper.UserMapperImpl"代表实现接口的类。
+    这种看似接口代表类的写法在java常见，推测是为了让人更关注接口中实现了什么方法，而不是实现类本身
+    -->
+    <bean id="userMapper" class="com.zhangyk.mapper.UserMapperImpl">
+        <property name="sqlSession" ref="sqlSession"/>
+    </bean>
+
+</beans>

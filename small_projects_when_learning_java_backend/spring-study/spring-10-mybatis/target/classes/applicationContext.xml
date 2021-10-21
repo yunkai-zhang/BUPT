@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--这个beans标签的各个属性是约束文件，xds检查我们的语法的
+针对aop的话，要添加的是：
+xmlns:aop="http://www.springframework.org/schema/aop"    末尾的aop本来是c，老师手动改成aop
+http://www.springframework.org/schema/aop
+https://www.springframework.org/schema/aop/spring-aop.xsd
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--！！！下面连续的三个bean是写死的，用于sqlsession准备相关的工作。
+    其实可以把它们分离成单独文件，因为他们可以直接使用并从不需要修改
+    ！！！-->
+    <!--DataSource:使用Spring的数据源替换Mybatis的配置 c3p0 dbcp druid
+    我们这里使用Spring提供的JDBC,但必须在pom中导入spring-jdbc才能使用
+    -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+    <!--下面这三行代码是直接从官网快速入门拷贝的：https://mybatis.org/spring/zh/getting-started.html
+    有了Spring提供的sqlSessionFactory就不用自己创建工具类了，使用的时候直接getbean就可-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+
+        <!--下面讲一些补充内容-->
+        <!--绑定mybatis配置文件，使得两个配置文件的配置内容合并-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--做一些mybatis-config.xml中可以做的工作。比如注册mapper-->
+        <property name="mapperLocations" value="classpath:com/zhangyk/mapper/*.xml"/>
+    </bean>
+    <!--SqlSessionTemplate:就是之前mybatis使用的sqlSession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <!--只能使用构造器注入sqlSessionFactory，因为它没有set方法-->
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!--
+    id="userMapper"是接口，代表实现的功能；id引用的class="com.zhangyk.mapper.UserMapperImpl"代表实现接口的类。
+    这种看似接口代表类的写法在java常见，推测是为了让人更关注接口中实现了什么方法，而不是实现类本身
+    -->
+    <bean id="userMapper" class="com.zhangyk.mapper.UserMapperImpl">
+        <property name="sqlSession" ref="sqlSession"/>
+    </bean>
+
+</beans>

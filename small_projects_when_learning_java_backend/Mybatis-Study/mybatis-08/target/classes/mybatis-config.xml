@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--引入外部配置文件
+    引入外部配置文件后，environment标签中的property标签就可以动态的配置，在db.properties文件中统一修改-->
+    <properties resource="db.properties">
+        <!--这里也可以实现db.properties中的配置功能，不过db.properties文件中的内容优先级更高，可以覆盖此处设置。出于解耦目的，强烈建议只在db.properties文件中配置-->
+        <property name="password" value="111111"/>
+    </properties>
+    
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--<setting name="logImpl" value="LOG4J"/>-->
+
+        <!--开启自动从数据库下划线命名到java驼峰命名的转化；如果数据库java字段本来就想相同，那就不用管-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!--可以给实体类起别名-->
+    <!--<typeAliases>-->
+        <!--<typeAlias type="com.User" alias="User"/>-->
+    <!--</typeAliases>-->
+    <typeAliases>
+        <package name="com.zhangyk.pojo"/>
+    </typeAliases>
+
+    <!--利用db.properties文件动态配置property标签-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--
+        1. 接口中用了注解就需要用class来绑定。(有人说用resource也可，我没细究)
+        2. 用了class就需要使Mapper.java和Mapper.xml打包后在同一目录下。
+        可以在resource中建立和java相同的文件目录，放入xml，打包后自动包含在一个文件夹内
+        3. 实际测试的时候，用resource绑定也可以成功，不过路径中不能用通配符，而得写完整路径-->
+        <mapper class="com.zhangyk.dao.BlogMapper"/>
+    </mappers>
+
+
+
+</configuration>

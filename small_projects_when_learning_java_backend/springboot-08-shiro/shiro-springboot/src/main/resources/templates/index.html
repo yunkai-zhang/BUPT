@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--加上命名空间后th:text不会爆红，网友说命名空间是提示性的，不是必须的。-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>首页</h1>
+
+<!--接收一下后端传来的model中的参数-->
+<p th:text="${msg}"></p>
+
+<div shiro:guest="true">
+    <a th:href="@{/toLogin}">登录</a>
+</div>
+<br>
+<div shiro:hasPermission="user:add"><a th:href="@{/user/add}">add</a> </div>  | <div shiro:hasPermission="user:update"><a th:href="@{/user/update}">update</a></div>
+</body>
+</html>

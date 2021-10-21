@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--这个beans标签的各个属性是约束文件，xds检查我们的语法的-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--使用Spring来创建对象，在Spring这些对象都称为bean
+    bean：对象
+    id:自定义bean对象的名字
+    class：bean对象对应的实体类（即pojo类）
+    -->
+    <bean id="hello" class="com.zhangyk.pojo.Hello">
+        <!--为bean对象的各个属性赋值；bean对象的属性和pojo对象的属性相同
+        ref：引用Spring容器中建好的对象
+        value：具体的值，基本数据类型
+        -->
+        <property name="str" value="Spring"/>
+    </bean>
+
+</beans>

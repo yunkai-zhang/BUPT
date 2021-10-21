@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DispatcherServlet的名字叫springmvc，然后加-servlet，即为针对某一DispatcherServlet写的Springmvc配置文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!--讲原理要配置“处理器映射器”和“处理器适配器”，真实开发不需要配置这两
+       “处理器映射器”和“处理器适配器”和“视图解析器”是SpringMVC的核心三要素，核心意味SpringMVC完成工作必定需要这三者
+       没有这三者，SpringMVC流程图相当于断了三次，肯定运行不起来-->
+       <!--处理器映射器
+       由于该处理器的作用，Spring就会在bean中找url的名字，进行处理。
+       比如用户访问url为/hello时，就会把请求映射为我们编写的HelloController类
+       -->
+       <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+       <!--处理器适配器-->
+       <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+       <!--视图解析器:模板引擎Thymeleaf  Freemarker...。这里我们用Spring的视图解析器。
+       也就是说下面到的类可以变，我们甚至可以用自己定义的视图解析器-->
+       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+              <!--
+              联想：前缀后缀在Mybatis的trim那使用过
+              这里前缀后缀的作用：我们不需要知道jsp文件的路径，只需要知道需要使用的jsp显示文件的名字即可。因为路径已经配置好了-->
+              <!--前缀-->
+              <property name="prefix" value="WEB-INF/jsp/"/>
+              <!--后缀-->
+              <property name="suffix" value=".jsp"/>
+       </bean>
+
+       <!--BeanNameUrlHandlerMapping：bean-->
+       <bean id="/hello" class="com.zhangyk.controller.HelloController"/>
+</beans>

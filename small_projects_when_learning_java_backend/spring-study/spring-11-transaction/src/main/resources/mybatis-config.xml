@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--注意mybatis-config的第一行不能有空格或者空行，或者注释：https://blog.csdn.net/zqq_2016/article/details/86674380-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration核心配置文件
+老师一般只在mybatis-config中配置“typealiases”和“settings”。
+其他的比如Mapper类绑定可以放到Spring-mybatis配置文件applicationContext中做
+-->
+<configuration>
+
+    <typeAliases>
+        <package name="com.zhangyk.pojo"/>
+    </typeAliases>
+
+    <!--这步可以在Spring-mybatis配置文件applicationContext中用mapperLocations属性配置-->
+    <!--<mappers>-->
+        <!--<mapper class="com.zhangyk.mapper.UserMapper"></mapper>-->
+    <!--</mappers>-->
+
+</configuration>

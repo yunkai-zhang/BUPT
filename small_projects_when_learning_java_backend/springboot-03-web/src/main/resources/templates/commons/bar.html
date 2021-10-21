@@ -1,0 +1,35 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!-- 定义th:fragment="topbar" -->
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
+        <!--后台主页显示登录用户的信息-->
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
+            [[${session.loginUser}]]
+        </a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#" th:href="@{/user/loginOut}">Sign out</a>>
+            </li>
+        </ul>
+    </nav>
+
+    <nav th:fragment="sitebar" class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" th:class="${activeUrl=='main.html'?'nav-link active':'nav-link'}" th:href="@{/main.html}">
+                        首页
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:class="${activeUrl=='emps'?'nav-link active':'nav-link'}"
+                       th:href="@{/emps}">员工管理
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+        //编写一个js对象 es6
+        console.log("=============js对象==============");
+        var user={
+            name:"张云",
+            age:3,
+            sex:"男"
+        };
+        console.log(user);
+
+        //将js对象转换为json字符串
+        console.log("=============js对象转换为json字符串==============");
+        var json = JSON.stringify(user);
+        console.log(json);
+
+        //将json字符串转换为js对象
+        console.log("=============json字符串转换为js对象==============");
+        var obj = JSON.parse(json);
+        console.log(obj);
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

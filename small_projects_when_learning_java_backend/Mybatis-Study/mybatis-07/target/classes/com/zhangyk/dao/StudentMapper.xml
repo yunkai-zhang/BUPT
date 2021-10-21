@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhangyk.dao.StudentMapper" >
+<!--
+思路：
+1. 查询所有的学生信息
+2. 根据查询出来的学生tid，寻找对应的老师
+
+
+.关于查询语句：
+ 如果resulttype是student，那么对于语句select s.name,t.name from student s, teacher t where s.tid=t.id; 因为要求返回一个student，这个语句查出来的是若干字段，所以不能用
+ 如果用语句select * from student;，因为数据库存的tid，但是pojo类中student中存的teacher对象，tid没办法赋值给teacher对象，所以查出来的student的teacher项为null
+-->
+    <resultMap id="StudentTeacher" type="com.zhangyk.pojo.Student">
+        <!--直接处理数据库和实体类不一致的teacher类处理即可-->
+        <!--复杂的属性，我们需要单独处理:对象：association,结合：collection
+        select属性把column传给getTeacher标签，返回的对象类型即为javatype的类型；把该类型的返回对象和property标注的pojo类属性映射
+        -->
+        <association property="teacher" column="tid" javaType="com.zhangyk.pojo.Teacher" select="getTeacher"/>
+    </resultMap>
+    
+    <select id="getStudent" resultMap="StudentTeacher">
+            select * from student;
+    </select>
+
+    <select id="getTeacher" resultType="com.zhangyk.pojo.Teacher">
+        select * from teacher where id=#{tid}
+    </select>
+
+
+
+    <select id="getStudent2" resultMap="StudentTeacher2">
+        select s.id sid,s.name sname,t.name tname,t.id tid from student s, teacher t where s.tid=t.id;
+    </select>
+    <resultMap id="StudentTeacher2" type="Student">
+        <!--由于sql起了别名，和pojo类属性对不上了，所以id和name也得显式的map-->
+        <result column="sid" property="id"/>
+        <result column="sname" property="name"/>
+        <!--把查到的结果通过association直接组合成teacher对象
+        javaType指出了property对应的java类
+
+        相当于把数据库查询的列分给对象的属性了
+        -->
+        <association property="teacher" javaType="com.zhangyk.pojo.Teacher">
+            <result column="tname" property="name"/>
+            <result column="tid" property="id"/>
+        </association>
+    </resultMap>
+
+</mapper>

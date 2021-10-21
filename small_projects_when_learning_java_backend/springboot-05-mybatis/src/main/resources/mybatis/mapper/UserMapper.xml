@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhangyun.springboot05mybatis.mapper.UserMapper">
+
+    <!--这个User要被识别的话，需要设置别名，并且UserMapper.xml能被spring识别。这个要在properties或者yaml中设置
+    注意观察“增删改”的标签都是parameterType，因为他们的return是被修改的行数，不是必须的。“查”的标签中是resultType，因为查返回的是User-->
+    <insert id="addUser" parameterType="User">
+        insert into user (id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        update user set name=#{name},pwd=#{pwd} where id=#{id}
+    </update>
+
+    <select id="queryUserList" resultType="User">
+        select * from user
+    </select>
+    <select id="queryUserById" resultType="User">
+        select * from user where id=#{id}
+    </select>
+</mapper>

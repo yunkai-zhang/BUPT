@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhangyk.dao.BlogMapper">
+    <!--values中的 #{create_time}需要对应实体类中的属性，所以应该修改成 #{createTime}-->
+    <insert id="addBlog" parameterType="com.zhangyk.pojo.Blog">
+        insert into mybatis.blog(id, title, author, create_time, views)
+        values (#{id}, #{title}, #{author}, #{createTime}, #{views})
+    </insert>
+
+
+    <!--where 1=1主要是为了有个where放在if外面，后面好接上and + sql语句-->
+    <select id="queryBlogIf" parameterType="map" resultType="com.zhangyk.pojo.Blog">
+        select * from mybatis.blog where 1=1
+        <if test="title!=null">
+            and title=#{title}
+        </if>
+        <if test="author!=null">
+            and author=#{author}
+        </if>
+    </select>
+
+    <!--where标签包裹时，建议when和if标签中的sql语句都在前面加上and，反正多余的and会被删除-->
+    <select id="queryBlogChoose" parameterType="map" resultType="com.zhangyk.pojo.Blog">
+        select * from mybatis.blog
+        <where>
+            <choose>
+                <when test="title!=null">
+                    and title=#{title}
+                </when>
+                <when test="author!=null">
+                    and author=#{author}
+                </when>
+                <otherwise>
+                    and views =#{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="updateBlog" parameterType="map">
+        update mybatis.blog
+        <set>
+            <if test="title!=null">
+                title=#{title},
+            </if>
+            <if test="author !=null">
+                author=#{author},
+            </if>
+        </set>
+        where id =#{id};
+    </update>
+
+    <!--sql代码块提取出来，方便复用和统一修改-->
+    <sql id="if-title-author">
+        <if test="title!=null">
+            and title=#{title}
+        </if>
+        <if test="author!=null">
+            and author=#{author}
+        </if>
+    </sql>
+    <select id="queryBlogSqlBlock" parameterType="map" resultType="com.zhangyk.pojo.Blog">
+        select * from mybatis.blog
+        <where>
+            <include refid="if-title-author"/>
+        </where>
+    </select>
+
+    <!--
+    select * from mybatis.blog where 1=1 and (id=1 or id=3 or id=5)
+
+    现在传递一个万能map，map的value可以存在一个集合
+    -->
+    <select id="queryBlogForEach" parameterType="map" resultType="blog">
+        select * from mybatis.blog
+        <where>
+            <foreach collection="ids" item="id" open="(" close=")" separator="or">
+                id=#{id}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--这个beans标签的各个属性是约束文件，xds检查我们的语法的
+针对aop的话，要添加的是：
+xmlns:aop="http://www.springframework.org/schema/aop"    末尾的aop本来是c，老师手动改成aop
+http://www.springframework.org/schema/aop
+https://www.springframework.org/schema/aop/spring-aop.xsd
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--注册bean
+    注册的都是借口的实现类
+    -->
+    <bean id="userService" class="com.zhangyk.service.UserServiceImpl"/>
+    <bean id="afterLog" class="com.zhangyk.log.AfterLog"/>
+    <bean id="beforeLog" class="com.zhangyk.log.BeforeLog"/>
+
+    <!--方式1：使用原生API接口-->
+    <!--配置aop：需要导入aop的约束（不写约束xmlns:aop貌似也能用）
+    -->
+    <!--<aop:config>-->
+        <!--&lt;!&ndash;切入点-->
+        <!--expression:表达式，execution(要执行的位置 * * * * *)。-->
+        <!--第一个参数表示返回类型，*表示所有类型-->
+        <!--第二个参数的UserServiceImpl表示要给UserServiceImpl插入一些AOP代码-->
+        <!--第二个参数的*表示UserServiceImpl下的任意方法，(..)表示该方法可以有任意参数；AOP会以这些方法为切入点，来插入代码-->
+
+        <!--待会执行的beforeLog和afterLog代码会在这个点上去执行-->
+
+        <!--可以配置多个切入点，也可以把某个切入点的方法固定成具体方法，不过本例暂时采用“一个切入点-不固定切入方法”的用法-->
+        <!--&ndash;&gt;-->
+        <!--<aop:pointcut id="pointCut" expression="execution(* com.zhangyk.service.UserServiceImpl.*(..))"/>-->
+
+        <!--&lt;!&ndash;执行环绕增加-->
+        <!--参数pointcut-ref 将beforeLog这个bean对象切入到pointcut-ref值指定的切入点，-->
+        <!--本例中切入点为UserServiceImpl中所有符合格式要求的方法-->
+        <!--&ndash;&gt;-->
+        <!--<aop:advisor advice-ref="beforeLog" pointcut-ref="pointCut"/>-->
+        <!--<aop:advisor advice-ref="afterLog" pointcut-ref="pointCut"/>-->
+    <!--</aop:config>-->
+
+    <!--方式二：自定义类-->
+    <!--<bean id="diy" class="com.zhangyk.diy.DiyPointCut"/>-->
+    <!--<aop:config>-->
+        <!--&lt;!&ndash;切面：就是一个类-->
+        <!--自定义切面，ref为要引用的类&ndash;&gt;-->
+        <!--<aop:aspect ref="diy">-->
+            <!--&lt;!&ndash;切入点-->
+            <!--execution函数的参数可以网上搜有详解：https://blog.csdn.net/corbin_zhang/article/details/80576809-->
+            <!--&ndash;&gt;-->
+            <!--<aop:pointcut id="point" expression="execution(* com.zhangyk.service.UserServiceImpl.*(..))"/>-->
+            <!--&lt;!&ndash;通知-->
+            <!--在上行定义的切入点的或前或后，去插入通知，通知即为新增的方法&ndash;&gt;-->
+            <!--<aop:before method="before" pointcut-ref="point"/>-->
+            <!--<aop:after method="after" pointcut-ref="point"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <!--方式三-->
+    <bean id="annotationPointCut" class="com.zhangyk.diy.AnnotationPointCut"/>
+    <!--开启注解支持-->
+    <aop:aspectj-autoproxy/>
+
+</beans>

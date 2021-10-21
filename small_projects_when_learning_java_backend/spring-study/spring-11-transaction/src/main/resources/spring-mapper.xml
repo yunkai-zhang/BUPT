@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--这个beans标签的各个属性是约束文件，xds检查我们的语法的
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--！！！下面连续的三个bean是写死的，用于sqlsession准备相关的工作。
+    其实可以把它们分离成单独文件，因为他们可以直接使用并从不需要修改
+    ！！！-->
+    <!--DataSource:使用Spring的数据源替换Mybatis的配置 c3p0 dbcp druid
+    我们这里使用Spring提供的JDBC,但必须在pom中导入spring-jdbc才能使用
+    -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+    <!--下面这三行代码是直接从官网快速入门拷贝的：https://mybatis.org/spring/zh/getting-started.html
+    有了Spring提供的sqlSessionFactory就不用自己创建工具类了，使用的时候直接getbean就可-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+
+        <!--下面讲一些补充内容-->
+        <!--绑定mybatis配置文件，使得两个配置文件的配置内容合并-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--做一些mybatis-config.xml中可以做的工作。比如注册mapper-->
+        <property name="mapperLocations" value="classpath:com/zhangyk/mapper/*.xml"/>
+    </bean>
+    <!--SqlSessionTemplate:就是之前mybatis使用的sqlSession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <!--只能使用构造器注入sqlSessionFactory，因为它没有set方法-->
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!--结合AOP实现事务的织入-->
+    <!--配置声明式事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <constructor-arg ref="dataSource" />
+    </bean>
+    <!--配置事务通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--给哪些方法配置事务-->
+        <!--配置事务的传播特性： new propagation=required默认的-->
+        <tx:attributes>
+            <tx:method name="add" propagation="REQUIRED"/>
+            <tx:method name="delete" propagation="REQUIRED"/>
+            <tx:method name="update" propagation="REQUIRED"/>
+            <!--query的话，就一般禁止对数据库进行增删改操作-->
+            <tx:method name="query" read-only="true"/>
+            <!--其实事务的话，一般配置下面这一行就可以，即让所有操作都实现事务-->
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置事务切入-->
+    <aop:config>
+        <!--设置切入点
+        切入点为：涉及数据库操作的所有“接口”的所有“函数”-->
+        <aop:pointcut id="txPointCut" expression="execution(* com.zhangyk.mapper.*.*(..))"/>
+        <!--进行通知切入-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+    </aop:config>
+    <!--要加上下面这行，否则会报注释中的错误：
+    Exception in thread "main" org.springframework.beans.factory.BeanNotOfRequiredTypeException:
+    Bean named 'userMapper' is expected to be of type 'com.zhangyk.mapper.UserMapperImpl'
+    but was actually of type 'com.sun.proxy.$Proxy7'
+    网友说这就是Spring原始框架没有开启CGLIB动态代理的问题-->
+    <aop:aspectj-autoproxy  proxy-target-class="true"/>
+
+</beans>

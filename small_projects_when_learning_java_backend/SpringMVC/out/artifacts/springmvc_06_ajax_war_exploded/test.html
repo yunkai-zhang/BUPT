@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe测试体验页面无刷新</title>
+
+    <script>
+        function go(){
+            //所有的值变量，提前获取。测试时。url可以用https://www.bilibili.com/
+            var url = document.getElementById("url").value;
+            document.getElementById("iframe1").src=url;
+        }
+    </script>
+</head>
+<body>
+<div>
+    <p> 请输入地址：</p>
+    <input type="text" id="url">
+    <input type="button" value="submit" onclick="go()">
+</div>
+
+<div>
+    <iframe id="iframe1" style="width:100%;height:500px"></iframe>
+</div>
+</body>
+</html>
