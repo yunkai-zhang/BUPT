@@ -1,13 +1,13 @@
-# Eureka监控页面访问：http://localhost:7001/
+# Eureka监控页面访问：http://localhost:7002/
 server:
-  port: 7001
+  port: 7002
 
 
 # Eureka配置
 eureka:
   instance:
     # Eureka服务端的实例名字。本机地址也可以写为“localhost”
-    hostname: eureka7001.com
+    hostname: eureka7002.com
   client:
     # 表示是否向 Eureka 注册中心注册自己(这个模块本身是服务器,所以不需要)
     register-with-eureka: false
@@ -17,4 +17,4 @@ eureka:
     service-url:
       # 单机：defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
       # 集群：关联其他的EurekaServer
-      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7003.com:7003/eureka/

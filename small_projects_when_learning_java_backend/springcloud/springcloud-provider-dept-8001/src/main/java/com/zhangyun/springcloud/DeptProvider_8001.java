@@ -2,6 +2,7 @@ package com.zhangyun.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /*Eureka是C-S架构，主启动类添加该注解后，在子module启动后会自动注册本module的服务到Eureka中
@@ -12,6 +13,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 //@SpringBootApplication注解让当前类编程子module的主启动类
 @SpringBootApplication
+//服务发现
+@EnableDiscoveryClient
 public class DeptProvider_8001 {
     public static void main(String[] args) {
         //第一页参数为启动类的类名，第二个参数为main函数的输入参数args
