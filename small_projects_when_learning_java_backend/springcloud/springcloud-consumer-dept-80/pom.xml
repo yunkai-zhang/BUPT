@@ -18,6 +18,19 @@
 
     <!--消费者不需要连数据库，只需要实体类子module+web。分工明确。-->
     <dependencies>
+        <!--Ribbon-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+        <!--Eureka: Ribbon需要从Eureka服务中心获取要拿什么-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>com.zhangyun</groupId>
             <artifactId>springcloud-api</artifactId>

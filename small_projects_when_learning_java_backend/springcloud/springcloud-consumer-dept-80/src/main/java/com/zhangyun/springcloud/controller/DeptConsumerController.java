@@ -14,8 +14,9 @@ import java.util.List;
 //@RestController标记的类是一个控制器。分发处理器将会扫描使用了该注解的类的方法,且不走视图解析器。
 @RestController
 public class DeptConsumerController {
-    //一些常量在这里写死
-    private static final String REST_URL_PREFIX="http://localhost:8001";
+    //使用ribbon做负载均衡后，这里的地址应该是一个变量，通过服务名来访问。
+    //private static final String REST_URL_PREFIX="http://localhost:8001";
+    private static final String REST_URL_PREFIX="http://SPRINGCLOUD-PROVIDER-DEPT";
 
     /*理解：消费者，不应该有service层
     *

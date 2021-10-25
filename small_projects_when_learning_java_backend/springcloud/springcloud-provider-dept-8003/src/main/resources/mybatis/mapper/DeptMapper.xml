@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+namespace:绑定当前mapper配置文件对应的XXXmapper.java接口
+id:XXXmapper.java接口中的方法名
+parameterType：这里能写简写的Dept，是因为application.yml中配置了type-aliases-package: com.zhangyun.springcloud.pojo
+values (#{dname}:mybatis会从传入的Dept中自动获取dname的值
+-->
+<mapper namespace="com.zhangyun.springcloud.mapper.DeptMapper">
+    <insert id="addDept" parameterType="Dept">
+        insert into dept(dname,db_source) values (#{dname},DATABASE());
+    </insert>
+    <select id="queryById" resultType="Dept" parameterType="long">
+        select * from dept where deptno=#{deptno};
+    </select>
+    <select id="queryAll" resultType="Dept">
+        select * from dept;
+    </select>
+</mapper>
