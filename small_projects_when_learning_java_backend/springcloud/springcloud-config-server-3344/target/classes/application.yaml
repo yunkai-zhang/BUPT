@@ -10,11 +10,13 @@ spring:
         git:
           # uri选码云上https的克隆链接
           uri: https://gitee.com/yunkai-zhang/spring-cloud-config.git
-          skip-ssl-validation: true
-          username: yunkai-zhang
-          password: 1583158534zykzyk
+          # gitee不需要此项
+          #skip-ssl-validation: true
+          # gitee仓库不需要填用户名和密码
+          #username: 用户名
+          #password: 密码
         # 一定要加这个，不然会报错“fatal: unable to access Failed to connect to github.com port 443 after 21040 ms: Timed out”。github上是main，gitee上是master。
-        default-label: master
+        #default-label: master
 # 不加这个配置会报Cannot execute request on any known server 这个错：连接Eureka服务端地址不对
 # 或者直接注释掉eureka依赖 这里暂时用不到eureka
 eureka:
