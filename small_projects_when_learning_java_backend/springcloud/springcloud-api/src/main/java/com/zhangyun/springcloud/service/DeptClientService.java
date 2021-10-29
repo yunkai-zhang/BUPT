@@ -13,8 +13,10 @@ import java.util.List;
 * 写了这个注解后，就和RPC的refernece注解一样，可以对服务直接调用了。
 *
 * value填applicationname
+*
+* 老师在这个接口这还写了@Component，但是我不写也能运行。目前不明白这里写@Component有什么意义。
 * */
-@FeignClient(value="SPRINGCLOUD-PROVIDER-DEPT")
+@FeignClient(value="SPRINGCLOUD-PROVIDER-DEPT", fallbackFactory=DeptClientServiceFallbackFactory.class)
 public interface DeptClientService {
 
     /*方法和服务提供者的接口中的一致

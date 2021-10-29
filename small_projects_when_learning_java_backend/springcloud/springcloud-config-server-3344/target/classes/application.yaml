@@ -1,0 +1,21 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: springcloud-config-server
+  # 连接远程仓库,具体有哪些属性可以配置可以在springcloud的官网上看。通过config-server可以连接到git，访问其中的资源和配置。
+  cloud:
+    config:
+      server:
+        git:
+          # uri选github上https的克隆链接
+          uri: https://github.com/yunkai-zhang/spring-cloud-config.git
+          skip-ssl-validation: true
+          username: yunkai-zhang
+          password: 1583158534zykzyk
+# 不加这个配置会报Cannot execute request on any known server 这个错：连接Eureka服务端地址不对
+# 或者直接注释掉eureka依赖 这里暂时用不到eureka
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

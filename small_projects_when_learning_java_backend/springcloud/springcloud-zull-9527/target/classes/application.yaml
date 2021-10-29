@@ -1,0 +1,30 @@
+# 配置项目（本微服务）端口号
+server:
+  port: 9527
+# 配置微服务在Eureka中的applicationname，一个applicationname会对应多个instanceid
+spring:
+  application:
+    name: springcloud-zuul
+# 配置本微服务往哪些EurekaServer去注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  # 配置本微服务的instanceid，以和其他有相同applicationname的微服务相区别
+  instance:
+    instance-id: zuul9527.com
+    # 隐藏Eureka监控界面左下角的，每个instance的ip地址
+    prefer-ip-address: true
+# 配置Eurekainfo信息，就是本微服务提供者想让别人直到什么信息就在这写
+info:
+  app.name: zhangyun-springcloud
+  company.name: github.zhangyun.com
+# 加上路由网关的配置
+zuul:
+  routes:
+    # 点击routes进去看到setRoutes(Map<String, ZuulProperties.ZuulRoute> routes)，所以可以随意定义kv键值对
+    mydept.serviceId: springcloud-provider-dept
+    # 把applicationname（Eureka中注册的）替换为下面的链接，来访问服务。从而实现隐藏applicationname的目的。
+    mydept.path: /mydept/**
+  # url不能用原路径即含applicationname的会泄露信息的路径访问服务，只能用zuul中新配置的mydept.path指定路径访问了
+  ignored-services: springcloud-provider-dept
