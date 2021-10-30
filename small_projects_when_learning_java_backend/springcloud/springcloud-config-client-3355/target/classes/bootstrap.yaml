@@ -1,0 +1,14 @@
+# 系统级别的配置，“根加载器”级别的；级别大于用户级别的application.yaml。用它可以覆盖其他低级别配置，防止潜在的冲突。
+spring:
+  cloud:
+    # config表示从远程git库读配制文件的相关配置
+    config:
+      # 下面的uri+name+profile=http://localhost:3344/config-client-dev.yaml=上一节服务端直接在浏览器访问资源时的链接”的格式“
+      # 根据CS架构，springcloud-config客户端连接的是springcloud-config服务端，而不应直接连接远程的git仓库（不然服务端就没有意义了）。
+      uri: http://localhost:3344
+      # 从git库的哪个分支去拿文件
+      label: master
+      # 需要从git上读取的资源名称，不需要后缀
+      name: config-client
+      # 需要从git上读取的资源的分配置区名
+      profile: dev

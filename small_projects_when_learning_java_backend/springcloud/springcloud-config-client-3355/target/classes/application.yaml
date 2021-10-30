@@ -1,0 +1,7 @@
+# 用户级别的配置。bootstrap.yaml中配置和干货，这里配置一下无关紧要的配置即可了。
+# 不需要配置端口号,因为client一启动就会从远程git库读取的配置文件中的端口号,就会用那个端口号.所以应该用8201或者8202端口(取决于bootstrap文件中配置读哪个profile)来调用服务器
+#server:
+#  port: 3355
+spring:
+  application:
+    name: springcloud-config-client-3355

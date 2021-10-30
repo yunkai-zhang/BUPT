@@ -1,0 +1,5 @@
+# 因为使用的是远程配置，所以这个文件可以不需要内容，空着。
+# 但是也可以在这配置一下applicationname。网友说“这个名字其实被bootstrap获取到名字覆盖了”
+spring:
+  application:
+    name: springcloud-config-eureka-7001

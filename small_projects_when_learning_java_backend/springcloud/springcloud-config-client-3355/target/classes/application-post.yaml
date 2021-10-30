@@ -1,0 +1,36 @@
+# 主配置区，指定哪个分区是当前分区
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 8201
+# spring的配置
+spring:
+  profile: dev
+  application:
+    # 给当前spring项目起名，一般名字和子module名字一致或接近
+    name: springcloud-provider-dept
+
+# Eureka配置：配置服务注册中心地址，该地址要和EurekaServer中配置的一致。子module会往这个地址注册服务。
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+---
+server:
+  port: 8202
+# spring的配置
+spring:
+  profile: test
+  application:
+    # 给当前spring项目起名，一般名字和子module名字一致或接近
+    name: springcloud-provider-dept
+
+# Eureka配置：配置服务注册中心地址，该地址要和EurekaServer中配置的一致。子module会往这个地址注册服务。
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/

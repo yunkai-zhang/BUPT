@@ -1,0 +1,8 @@
+# 可以看到本地的EurekaServer都没有配置关于EurekaServer的东西。一切配置从远程拿。
+spring:
+  cloud:
+    config:
+      name: config-eureka
+      label: master
+      profile: dev
+      uri: http://localhost:3344
