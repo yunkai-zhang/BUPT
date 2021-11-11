@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78f437a3-1f75-489a-be21-56ff9680ffba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d3e8a168-bdde-4ed5-ba8b-d82e59196c34.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d3e8a168-bdde-4ed5-ba8b-d82e59196c34.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-04/mybatis-04.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-06/mybatis-06.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-07/mybatis-07.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="78f437a3-1f75-489a-be21-56ff9680ffba" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -324,7 +316,7 @@
       <workItem from="1625190348970" duration="9199000" />
       <workItem from="1625281694352" duration="8927000" />
       <workItem from="1625365143102" duration="1866000" />
-      <workItem from="1636612233520" duration="635000" />
+      <workItem from="1636612233520" duration="1231000" />
     </task>
     <servers />
   </component>
