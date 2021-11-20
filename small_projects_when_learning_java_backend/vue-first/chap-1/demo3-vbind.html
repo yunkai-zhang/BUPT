@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--编写前端即view层-->
+<div id="app">
+    <!--3. 第三步前端从data中拿数据-->
+    <span v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+</div>
+
+
+<!--使用cdn的方式导入vue.js轻量版-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<!--创建VM对象，沟通Model和view-->
+<script>
+    //Vue()是构造函数，括号中放置类似json字符串的大括号及值,值之间以逗号分割。可以创建多个vm来绑定多个前端组件。
+    var vm = new Vue({
+        //1.第一步绑定前端组件：el表示element即元素，用于绑定前端组件的id
+        el: "#app",
+        /*2. 第二步data放置数据：前后端分离，data要交给前端控制,此为model层。后端就算不给数据，前端也可以在这里放个模拟数据，也是实现
+        前后端分离的一种形式*/
+        data:{
+            message: "这里动态绑定了hello, vue!"
+        }
+    });
+</script>
+
+</body>
+</html>
