@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--组件：传递给组件中的值：props-->
+    <zhangyun v-for="item in items" v-bind:temp="item"></zhangyun>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+    //定义组件
+    Vue.component("zhangyun",{
+        props:['temp'],
+        template:'<li>{{temp}}</li>'
+
+    });
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            items:["java","Linux","前端","love张云"]
+        }
+    });
+</script>
+</body>
+</html>

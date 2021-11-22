@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  输入的文本：<input type="text" v-model="message" value="hello">{{message}}
+</div>
+
+<!--1.导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      message:""
+    }
+  });
+</script>
+</body>
+</html>

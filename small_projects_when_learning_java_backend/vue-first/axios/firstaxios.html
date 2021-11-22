@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-binf="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--v-clock 解决{{message}}原始变量直接出现在页面上的问题：用上后，页面会是先空白，等完全加载好了再出现。-->
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="vue">
+<!--    3. 页面从data的info中拿数据-->
+    <div>地名：{{info.name}}</div>
+    <div>地址：{{info.address.country}}--{{info.address.city}}--{{info.address.street}}</div>
+<!--    target="_blank"意为在新的页面打开链接，但是有潜在的安全风险
+v-bind:使得点击链接时，不直接访问https://info.url，而是data中info.url对应的value；标签的元素特性必须用vbind绑定才能使用VM的data中的内容-->
+    <div>链接：<a v-bind:href="info.url" target="_blank">{{info.url}}</a> </div>
+</div>
+
+<!--引入js文件-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#vue",
+        /*
+        * data：属性：vm，存一些数据。
+        * */
+        data(){
+            return{
+                info:{
+                    name:null,
+                    address:{
+                        country:null,
+                        city:null,
+                        street:null
+                    },
+                    url:null
+                }
+            }
+        },
+        mounted(){//钩子函数
+            //1. 使用get()从json中读取了数据，该数据可以用response.data拿到
+            axios.get('../data.json')
+                //2. 把读取的数据赋值给VM的info对象
+                .then(response=>(this.info=response.data));
+        }
+    });
+</script>
+</body>
+</html>

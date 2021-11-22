@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    单复选框：
+    <input type="checkbox" id="checkbox" v-model="checked">
+    &nbsp;&nbsp;
+    <label for="checkbox">{{checked}}</label>
+</div>
+
+<!--1.导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            checked:false
+        }
+    });
+</script>
+</body>
+</html>

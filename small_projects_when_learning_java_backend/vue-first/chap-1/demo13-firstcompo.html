@@ -1,0 +1,18 @@
+<div id="app">
+<!--  直接使用自定义的zhangyun组件-->
+  <zhangyun></zhangyun>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+  //先注册组件,组件中对象的名字是“zhangyun”，对象的内容在大括号中括着。这里定义了一个名字叫“zhangyun”的组件
+  Vue.component("zhangyun",{
+
+    template:'<li>Hello</li>'
+
+  });
+  //再实例化Vue
+  var vm = new Vue({
+    el:"#app",
+  });
+</script>

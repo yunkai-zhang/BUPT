@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  多行文本：<textarea v-model="pan"></textarea>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多行文本是：{{pan}}
+<!--  多行文本：<textarea v-model="pan"></textarea>多行文本是：{{pan}}-->
+</div>
+
+<!--1.导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      pan:"Hello hello!"
+    }
+  });
+</script>
+</body>
+</html>
