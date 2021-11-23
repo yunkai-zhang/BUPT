@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--view层，模板-->
+<div id="vue">
+  <todo>
+<!--    将两个自定义组件，通过插槽插入-->
+    <todo-title slot="todo-title" v-bind:title="title"></todo-title>
+<!--    v-bind:item="item"的双引号可以不用-->
+    <todo-items slot="todo-items" v-for="(item,index) in todoItems" v-bind:index=index v-bind:item="item"></todo-items>
+  </todo>
+</div>
+<!--1.导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+  Vue.component('todo',{
+    //插槽用name属性绑定自定义的component。代码留出用<slot>标签留出插槽。
+    template:'<div>\
+                <slot name="todo-title"></slot>\
+                <ul>\
+                    <slot name="todo-items"></slot>\
+                </ul>\
+            </div>'
+  });
+
+  //定义一个名为todo-title的待办标题组件 和 todo-items的待办内容组件
+  Vue.component('todo-title',{
+    props:['title'],
+    template:'<div>{{title}}</div>'
+  });
+  //这里的index，就是数组的下标，使用for循环遍历的时候，可以循环出来！
+  Vue.component("todo-items",{
+    props:["item","index"],
+    template:"<li>{{index}},{{item}}</li>"
+  });
+
+  //实例化Vue并初始化数据
+  var vm = new Vue({
+    el:"#vue",
+    data:{
+      title:"张云学java",
+      todoItems:['javaweb','ssm','springboot']
+    }
+  });
+</script>
+</body>
+</html>

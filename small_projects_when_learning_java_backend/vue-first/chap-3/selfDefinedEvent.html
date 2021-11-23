@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--view层，模板-->
+<div id="vue">
+  <todo>
+    <todo-title slot="todo-title" :title="title_text"></todo-title>
+    <!--<todo-items slot="todo-items" v-for="(item,index) in todoItems" v-bind:item="item"></todo-items>-->
+    <!--如下简写“v-bind：”为“：”
+    v-on:remove的remove是一个自定义事件名字，绑定了事件执行时使用的方法为removeItems-->
+    <todo-items slot="todo-items" v-for="(item,index) in todoItems"
+                :item_p="item" :index_p="index" v-on:remove="removeItems(index)" :key="index"></todo-items>
+  </todo>
+</div>
+<!--1.导入Vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+  Vue.component('todo',{
+    template:'<div>\
+                <slot name="todo-title"></slot>\
+                <ul>\
+                    <slot name="todo-items"></slot>\
+                </ul>\
+            </div>'
+  });
+  Vue.component('todo-title',{
+    props:['title'],
+    template:'<div>{{title}}</div>'
+  });
+  //这里的index，就是数组的下标，使用for循环遍历的时候，可以循环出来！
+  Vue.component("todo-items",{
+    props:["item_p","index_p"],
+    template:"<li>{{index_p+1}},{{item_p}} <button @click='remove_methods'>删除</button></li>",
+    methods:{
+      remove_methods:function (index) {
+        //this.$emit 自定义事件分发，绑定了删除按钮点击这一动作和自定义事件remove。
+        this.$emit('remove',index);
+      }
+    }
+  });
+
+  var vm = new Vue({
+    el:"#vue",
+    data:{
+      title_text:"张云学java",
+      todoItems:['test1','test2','test3']
+    },
+    methods:{
+      removeItems:function(index){
+        console.log("删除了"+this.todoItems[index]+"OK");
+        //this指的是当前vm对象。splice是操作js数组的一个工具，1表示一次删除一个元素。
+        this.todoItems.splice(index,1);
+      }
+    }
+  });
+</script>
+</body>
+</html>
