@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       activeIndex: "1",
       activeIndex2: "1"
