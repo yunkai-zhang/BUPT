@@ -1,0 +1,1 @@
+(()=>{var i,e={645:(i,e)=>{e.sayHi=function(){document.write("<div>Hello Webpack</div>")},e.sayHi2=function(){document.write("<div>Hello Webpack2</div>")}}},r={};(i=function i(t){var o=r[t];if(void 0!==o)return o.exports;var n=r[t]={exports:{}};return e[t](n,n.exports,i),n.exports}(645)).sayHi(),i.sayHi2()})();
