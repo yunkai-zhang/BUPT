@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58c32dd3-3b65-4f46-a580-ed04d6c90692" name="Changes" comment="" />
+    <list default="true" id="58c32dd3-3b65-4f46-a580-ed04d6c90692" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../hello-vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-vue/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-vue/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-vue/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hello-vue" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -42,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1637720024168</updated>
       <workItem from="1637720025904" duration="6351000" />
+      <workItem from="1637815916276" duration="226000" />
     </task>
     <servers />
   </component>
