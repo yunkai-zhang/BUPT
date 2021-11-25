@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 //导入组件
 import Main from "../views/Main";
 import Login from "../views/Login";
+import NotFound from '../views/NotFound'
 //导入主页下的子组件
 import UserList from "../views/user/List";
 import UserProfile from "../views/user/Profile";
@@ -14,6 +15,7 @@ Vue.use(VueRouter);
 
 //导出
 export default new VueRouter({
+  mode: 'history',
   routes: [
     //首页，前端url请求/main的时候路由到Main.vue页面
     {
@@ -43,6 +45,10 @@ export default new VueRouter({
     {
       path: '/goLogin',
       redirect: '/login'
+    },
+    {
+      path: '*',
+      component: NotFound
     }
 
   ]
