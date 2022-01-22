@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  # 本springbootweb项目，提供计算访问量的服务
+  zy-view-num-count:
+    # 这个“.”，表示根据当前目录下的”Dockerfile“构建镜像。当然了，也可以在“build”子层级通过“dockerfile”指定dockerfile，但是本项目只有一个dockerfile，就没必要多此一举。
+    build: .
+    # 设置根据build构建的镜像的名字,随意写即可
+    image: zy-view-num-count
+    depends_on:
+      # 表示zy-view-num-count服务依赖与redis服务
+      - redis
+    # 指定本服务使用的端口映射
+    ports:
+      - "8080:8080"
+  redis:
+    # 直接使用官方镜像；本地不存在官方镜像的话会从dockerhub拉取
+    image: "library/redis:alpine"
+
